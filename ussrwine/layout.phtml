@@ -16,7 +16,7 @@ $listingDetailsPage = ($module == 'Listings' && $controller == 'Listing' && $act
 
 $parentId = $request->getParam('parent_id');
 
-$this->setGlobal('themeFolder', $this->baseUrl . '/' . $this->themesFolder . '/' . 'eight');
+$this->setGlobal('themeFolder', $this->baseUrl . '/' . $this->themesFolder . '/' . 'ussrwine');
 $this->setGlobal('indexPage', $indexPage);
 $this->setGlobal('browsePage', $browsePage);
 
@@ -50,7 +50,8 @@ $colorTheme = (isset($this->settings['eight_theme_color_theme'])) ? $this->setti
 
     $this->script()->addHeaderCode('<link href="' . $this->themeFolder . '/css/theme.css" media="all" rel="stylesheet" type="text/css">')
         ->addHeaderCode('<link href="' . $this->themeFolder . '/css/' . $headerType . '.css" media="all" rel="stylesheet" type="text/css">')
-        ->addHeaderCode('<link href="' . $this->themeFolder . '/css/colors.css" media="all" rel="stylesheet" type="text/css">');
+        ->addHeaderCode('<link href="' . $this->themeFolder . '/css/colors.css" media="all" rel="stylesheet" type="text/css">')
+        ->addHeaderCode('<link href="' . $this->themeFolder . '/css/my.css" media="all" rel="stylesheet" type="text/css">');
     ?>
 
     <?php echo $this->script()->displayHeaderCode(); ?>
