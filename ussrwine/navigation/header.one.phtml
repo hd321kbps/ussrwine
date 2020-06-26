@@ -132,7 +132,7 @@ $cartDropdown = $this->cart(null, 'partials/cart-dropdown.phtml')->dropdown();
                             ->setValue($request->getParam('parent_id'))
                             ->render();
                         ?>
-                        <div class="col-4 px-0">
+                        <!-- <div class="col-4 px-0">
                             <ul id="category-select-content">
                                 <li>
                                     <a href="#"
@@ -167,7 +167,7 @@ $cartDropdown = $this->cart(null, 'partials/cart-dropdown.phtml')->dropdown();
                             <a id="category-select-btn" class="form-control" href="#">
                                 <span><?php echo $selectedCategory; ?></span> <span data-feather="chevron-down"></span>
                             </a>
-                        </div>
+                        </div> -->
                         <div class="col px-1">
                             <input id="basic-search" type="text" name="keywords" class="form-control"
                                    value="<?php echo $request->getParam('keywords'); ?>"
@@ -277,6 +277,10 @@ $cartDropdown = $this->cart(null, 'partials/cart-dropdown.phtml')->dropdown();
                     <a class="nav-link"
                        href="<?php echo $this->url(array('module' => 'members', 'controller' => 'tools', 'action' => 'watched-items')); ?>"
                        title="<?php echo $this->_('Wish List'); ?>"><?php echo $this->_('Wish List'); ?></a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="https://forumwuc.com/" title="Наш Форум" target="_blank">Наш Форум</a>
                 </li>
 
                 <li class="nav-item au-links-mobile">
