@@ -128,7 +128,7 @@ $cartDropdown = $this->cart(null, 'partials/cart-dropdown.phtml')->dropdown();
                                     foreach ($categories as $category) {
                                         $shortCategoryName = $this->_($category['name']);
                                         $length = strlen($shortCategoryName);
-                                        $shortCategoryName = substr($shortCategoryName, 0, $maxChars) . (($length > $maxChars) ? '...' : '');
+                                        $shortCategoryName = mb_substr($shortCategoryName, 0, $maxChars) . (($length > $maxChars) ? '...' : '');
 
                                         if ($category['id'] == $request->getParam('parent_id')) {
                                             $selectedCategory = $shortCategoryName;
