@@ -166,6 +166,11 @@ footer.footer-two {
   right: -45px;
   top: -7px;
 }
+@media (min-width: 1200px) {
+  .main {
+    flex: 0 0 calc(100% - 235px);
+  }
+}
 @media (max-width: 575.98px) {
   .listing-card .card-footer .button-text {
       display: inline;
