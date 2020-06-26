@@ -50,13 +50,14 @@ $cartDropdown = $this->cart(null, 'partials/cart-dropdown.phtml')->dropdown();
         <!-- HEADER NAVIGATION -->
         <div class="row py-1">
             <div class="col-auto">
-                <span class="helper"></span>
-                <a class="navbar-brand" href="<?php echo $this->url(null, 'app-home'); ?>"
-                   title="<?php echo $this->settings['sitename']; ?>">
-                    <img src="<?php echo $this->thumbnail()->generateImagePath($this->settings['site_logo_path']); ?>"
-                         class="img-fluid"
-                         alt="<?php echo $this->settings['sitename']; ?>">
-                </a>
+                <span class="helper">
+                  <a class="navbar-brand" href="<?php echo $this->url(null, 'app-home'); ?>"
+                    title="<?php echo $this->settings['sitename']; ?>">
+                      <img src="<?php echo $this->thumbnail()->generateImagePath($this->settings['site_logo_path']); ?>"
+                          class="img-fluid"
+                          alt="<?php echo $this->settings['sitename']; ?>">
+                  </a>
+                </span>
             </div>
             <div class="col">
                 <div class="mt-1 d-flex align-items-center justify-content-end">
