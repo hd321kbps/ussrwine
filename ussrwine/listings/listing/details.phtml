@@ -220,6 +220,11 @@ $this->script()->addBodyCode("
                                         <?php echo $this->listing()->countdown(true); ?>
                                     </dd>
                                 </dl>
+                                <div>
+                                    <small><?php echo $this->_('Start Time:'); ?>
+                                        <em class="au-start-time"><?php echo $this->date($listing['start_time']); ?></em>
+                                    </small>
+                                </div>
                             <?php } ?>
 
                             <?php if ($listing->isProduct() && $live === true) { ?>
@@ -248,6 +253,13 @@ $this->script()->addBodyCode("
                                 <?php echo $this->purchaseForm; ?>
                             </div>
                             <!-- /PURCHASE FORM -->
+
+                            <div>
+                                <small>
+                                    <?php echo $this->_('End Time:'); ?>
+                                    <em class="au-end-time"><?php echo $this->date($listing['end_time']); ?></em>
+                                </small>
+                            </div>
 
                             <?php if ($live === true && $this->settings['enable_shipping'] && !$listing->isClassified()) {
                                 $seller->getShipping()->clearData()->addData($listing);
