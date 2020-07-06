@@ -205,13 +205,13 @@ class Search extends AbstractElements
                     'class' => 'form-control input-tiny',
                 )
             ),
-            array(
-                'form_id'      => array('basic', 'advanced'),
-                'id'           => 'show_only',
-                'element'      => 'checkbox',
-                'label'        => $this->_('Show Only'),
-                'multiOptions' => $showOnly
-            ),
+            // array(
+            //     'form_id'      => array('basic', 'advanced'),
+            //     'id'           => 'show_only',
+            //     'element'      => 'checkbox',
+            //     'label'        => $this->_('Show Only'),
+            //     'multiOptions' => $showOnly
+            // ),
             array(
                 'form_id'      => array('basic', 'advanced'),
                 'id'           => 'listing_type',
