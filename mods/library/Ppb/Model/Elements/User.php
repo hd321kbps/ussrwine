@@ -388,7 +388,7 @@ class User extends AbstractElements
                 'form_id'      => 'address',
                 'id'           => 'state',
                 'element'      => (count($states) > 0) ? 'select' : 'text',
-                'label'        => $this->_('State/County'),
+                'label'        => $this->_('Region/State'),
                 'multiOptions' => $states,
                 'description'  => $this->_('Enter the state/county you live in.'),
                 'attributes'   => array(
