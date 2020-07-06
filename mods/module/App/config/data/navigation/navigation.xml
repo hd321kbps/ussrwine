@@ -648,7 +648,7 @@
                         <action>index</action>
                     </home>
                     <buy>
-                        <label>Buy</label>
+                        <label>Categories</label>
                         <module>listings</module>
                         <controller>categories</controller>
                         <action>browse</action>
