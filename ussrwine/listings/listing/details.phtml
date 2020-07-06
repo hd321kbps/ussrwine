@@ -573,6 +573,12 @@ $this->script()->addBodyCode("
             <?php
             $activeTab = '';
         } ?>
+        <li class="nav-item">
+          <a class="nav-link"
+              href="<?php echo $this->url($seller->otherItemsLink()); ?>">
+              <?php echo $this->_('View Other Items'); ?>
+          </a>
+      </li>
     </ul>
 
     <?php $activeTab = 'show active'; ?>
