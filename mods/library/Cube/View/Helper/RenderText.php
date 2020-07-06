@@ -39,7 +39,7 @@ class RenderText extends AbstractHelper
 
         if ($maxChars !== null) {
             $length = strlen($output);
-            $output = substr($output, 0, $maxChars) . (($length > $maxChars) ? '...' : '');
+            $output = mb_substr($output, 0, $maxChars) . (($length > $maxChars) ? '...' : '');
         }
 
         return ($nl2br) ? nl2br($output) : $output;
