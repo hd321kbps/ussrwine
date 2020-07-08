@@ -60,7 +60,7 @@ $listingModel
     <?php echo $this->form->getHiddenElements(true); ?>
 
     <?php if ($currentStep == 'preview') { ?>
-        <div class="mb-4">
+        <!-- <div class="mb-4">
             <h5 class="subtitle">
                 <?php echo $this->_('Listing Setup Fees'); ?>
             </h5>
@@ -80,7 +80,7 @@ $listingModel
                 <dd class="col-9 col-sm-10 fees-total"><?php echo $this->amount($listingSetupService->getTotalAmount()); ?>
                 </dd>
             </dl>
-        </div>
+        </div> -->
 
         <?php if ($this->settings['listing_terms_box']) { ?>
             <h5 class="subtitle">
