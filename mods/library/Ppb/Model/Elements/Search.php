@@ -2,13 +2,13 @@
 
 /**
  *
- * PHP Pro Bid $Id$ hac3orgYGUj8Hk8oPlICi1aQhrclHfOjZ6Qv2bJGJ/boFKZu4cebckusvaPCkgNOIrt47bEGBib89uLv8/u9EnGXM9A0zbX3rZNcbjvCzI0=
+ * PHP Pro Bid $Id$ tWvF1wAgkIqEOzGoi8uk0AT/uqXUfdWDo1T8zWBsuH8RXtPtOYiVRMdjRci6fsSbwZbmHC9T6bSVJXp/4/HYe+6shAlpejc0Vmv3BeRmduo=
  *
  * @link        http://www.phpprobid.com
- * @copyright   Copyright (c) 2020 Online Ventures Software & CodeCube SRL
+ * @copyright   Copyright (c) 2021 Online Ventures Software & CodeCube SRL
  * @license     http://www.phpprobid.com/license Commercial License
  *
- * @version     8.2 [rev.8.2.01]
+ * @version     8.3 [rev.8.3.02]
  */
 
 namespace Ppb\Model\Elements;
@@ -126,7 +126,7 @@ class Search extends AbstractElements
             }
         }
 
-        $categoriesMultiOptions = $this->getCategories()->getMultiOptions($categoriesSelect, null, $translate->_('All Categories'));
+        $categoriesMultiOptions = $this->getCategories()->getMultiOptions($categoriesSelect, null, $translate->_('All Categories'), false, !$settings['hide_empty_categories']);
 
         $customFields = $this->getCustomFields()->getFields(
             array(
@@ -257,7 +257,13 @@ class Search extends AbstractElements
             }
 
             if (in_array($customField['element'], array('text', 'textarea'))) {
-                $attributes = unserialize($customField['attributes']);
+                $attributes = json_decode($customField['attributes'], true);
+                $attributes = (is_array($attributes)) ? $attributes : @unserialize($customField['attributes']);
+
+                if (!is_array($attributes)) {
+                    $attributes = array('key' => array(), 'value' => array(),);
+                }
+
                 array_push($attributes['key'], 'class');
                 if ($customField['element'] == 'text' && in_array('advanced', $this->_formId)) {
                     array_push($attributes['value'], 'form-control input-default');

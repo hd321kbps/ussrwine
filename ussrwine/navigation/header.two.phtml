@@ -1,6 +1,6 @@
 <?php
 /**
- * @version 8.0 [rev.8.0.01]
+ * @version 8.3 [rev.8.3.01]
  */
 
 $categories = $this->categories()->getData();
@@ -51,12 +51,12 @@ $cartDropdown = $this->cart(null, 'partials/cart-dropdown.phtml')->dropdown();
         <div class="row py-1">
             <div class="col-auto">
                 <span class="helper">
-                  <a class="navbar-brand" href="<?php echo $this->url(null, 'app-home'); ?>"
-                    title="<?php echo $this->settings['sitename']; ?>">
-                      <img src="<?php echo $this->thumbnail()->generateImagePath($this->settings['site_logo_path']); ?>"
-                          class="img-fluid"
-                          alt="<?php echo $this->settings['sitename']; ?>">
-                  </a>
+                <a class="navbar-brand" href="<?php echo $this->url(null, 'app-home'); ?>"
+                   title="<?php echo $this->settings['sitename']; ?>">
+                    <img src="<?php echo $this->thumbnail()->generateImagePath($this->settings['site_logo_path']); ?>"
+                         class="img-fluid"
+                         alt="<?php echo $this->settings['sitename']; ?>">
+                </a>
                 </span>
             </div>
             <div class="col">
@@ -115,22 +115,25 @@ $cartDropdown = $this->cart(null, 'partials/cart-dropdown.phtml')->dropdown();
 
                                     /** @var \Ppb\Db\Table\Row\Category $category */
                                     foreach ($categories as $category) {
-                                        $shortCategoryName = $this->_($category['name']);
-                                        $length = strlen($shortCategoryName);
-                                        $shortCategoryName = mb_substr($shortCategoryName, 0, $maxChars) . (($length > $maxChars) ? '...' : '');
+                                        if ($category->getCounter() > 0 || !$this->settings['hide_empty_categories']) {
+                                            $shortCategoryName = $this->_($category['name']);
+                                            $length = strlen($shortCategoryName);
+                                            $shortCategoryName = substr($shortCategoryName, 0, $maxChars) . (($length > $maxChars) ? '...' : '');
 
-                                        if ($category['id'] == $request->getParam('parent_id')) {
-                                            $selectedCategory = $shortCategoryName;
+                                            if ($category['id'] == $request->getParam('parent_id')) {
+                                                $selectedCategory = $shortCategoryName;
+                                            }
+                                            ?>
+                                            <li>
+                                                <a href="<?php echo $this->url($category->link()); ?>"
+                                                   data-id="<?php echo $category['id']; ?>"
+                                                   data-category-name="<?php echo $shortCategoryName; ?>">
+                                                    <?php echo $this->_($category['name']); ?>
+                                                </a>
+                                            </li>
+                                            <?php
                                         }
-                                        ?>
-                                        <li>
-                                            <a href="<?php echo $this->url($category->link()); ?>"
-                                               data-id="<?php echo $category['id']; ?>"
-                                               data-category-name="<?php echo $shortCategoryName; ?>">
-                                                <?php echo $this->_($category['name']); ?>
-                                            </a>
-                                        </li>
-                                    <?php } ?>
+                                    } ?>
                                 </ul>
                                 <a id="category-select-btn" class="form-control" href="#">
                                     <span><?php echo $selectedCategory; ?></span> <span

@@ -2,13 +2,13 @@
 
 /**
  *
- * Cube Framework $Id$ uK2TSaJGZnrtM+opmcpp54qKmJKd1isKNLakVns72ondQ9OZ4BaatmnNPzL2fROyoPtS6/0iHOgKvnrbdQH2kmFm7jnfU2/LE1hxBunFagQ=
+ * Cube Framework $Id$ MzunkLMy6KV8l+PHHZdZB2HhkMpwehcN9sZk2MqyQAe/P78JNBbe3VrDZY4pG5XWKg8QOLmoZDS471MY+XJ2aDY5BY5U9Ma8fDQydRpKtqE=
  *
  * @link        http://codecu.be/framework
- * @copyright   Copyright (c) 2018 CodeCube SRL
+ * @copyright   Copyright (c) 2021 CodeCube SRL
  * @license     http://codecu.be/framework/license Commercial License
  *
- * @version     2.0 [rev.2.0.02]
+ * @version     2.3 [rev.2.3.01]
  */
 
 /**
@@ -33,9 +33,7 @@ class RenderText extends AbstractHelper
      */
     public function renderText($string, $nl2br = false, $maxChars = null)
     {
-        $output = trim(str_ireplace(
-            array("'", '"', '<', '>'), array('&#039;', '&quot;', '&lt;', '&gt;'),
-            strip_tags(stripslashes(rawurldecode($string)))));
+        $output = htmlspecialchars(strip_tags(htmlspecialchars_decode($string)));
 
         if ($maxChars !== null) {
             $length = strlen($output);

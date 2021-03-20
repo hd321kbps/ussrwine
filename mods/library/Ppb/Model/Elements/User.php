@@ -2,13 +2,13 @@
 
 /**
  *
- * PHP Pro Bid $Id$ i+ww5lkWFjChlAMcFVMeKXcH/IY+wCiBdL7XDConCdtbyttgLMTBpWG2WrpHw0/VbrCSr5uxIyLPAptwLsfZFZ0FdOJZXwTlE3PLloGryak=
+ * PHP Pro Bid $Id$ Dui6mZd1MnhYyN4fAiR2TIdKIb9IKVr8TY8/nPnLL+hg34QrO4+BKj1WT7DPHi3J2FpZk9MaGHti/kPR63huqv265FVjvE6ZzXC/dEhabH8=
  *
  * @link        http://www.phpprobid.com
- * @copyright   Copyright (c) 2020 Online Ventures Software & CodeCube SRL
+ * @copyright   Copyright (c) 2021 Online Ventures Software & CodeCube SRL
  * @license     http://www.phpprobid.com/license Commercial License
  *
- * @version     8.2 [rev.8.2.04]
+ * @version     8.3 [rev.8.3.02]
  */
 
 /**
@@ -196,22 +196,13 @@ class User extends AbstractElements
             $categoriesSelect->where('user_id is null');
         }
 
-        $passwordMinLength = (!empty($settings['password_min_length'])) ? $settings['password_min_length'] : 6;
-        $passwordValidator = new Validate\Password(array($passwordMinLength));
-
-        if (!empty($settings['password_strength_settings'])) {
-            $passwordStrengthSettings = (array)\Ppb\Utility::unserialize($settings['password_strength_settings']);
-            if (in_array('uppercase', $passwordStrengthSettings)) {
-                $passwordValidator->setUppercase();
-            }
-            if (in_array('digit', $passwordStrengthSettings)) {
-                $passwordValidator->setDigit();
-            }
-            if (in_array('special', $passwordStrengthSettings)) {
-                $passwordValidator->setSpecial();
-            }
-        }
-
+        $passwordStrengthSettings = (array)\Ppb\Utility::unserialize($settings['password_strength_settings']);
+        $passwordValidator = new Validate\Password(array(
+            (!empty($settings['password_min_length'])) ? $settings['password_min_length'] : 6,
+            in_array('uppercase', $passwordStrengthSettings),
+            in_array('digit', $passwordStrengthSettings),
+            in_array('special', $passwordStrengthSettings),
+        ));
 
         $emailAttributes = array(
             'class' => 'form-control input-medium',
@@ -522,11 +513,12 @@ class User extends AbstractElements
                 ),
             ),
             array(
-                'form_id'     => array('basic', 'admin'),
+                'form_id'     => array('basic', 'admin', 'reset-password'),
                 'id'          => 'password',
                 'element'     => 'password',
                 'label'       => $this->_('Password'),
-                'description' => $this->_('Create a password for your account.'),
+                'description' => sprintf($translate->_('Enter a password for your account.<br>Password strength rules: %s.'),
+                    $passwordValidator->getConditions()),
                 'attributes'  => array(
                     'class' => 'form-control input-medium',
                 ),
@@ -536,7 +528,7 @@ class User extends AbstractElements
                 ),
             ),
             array(
-                'form_id'     => array('basic', 'admin'),
+                'form_id'     => array('basic', 'admin', 'reset-password'),
                 'id'          => 'password_confirm',
                 'element'     => 'password',
                 'label'       => $this->_('Confirm Password'),
