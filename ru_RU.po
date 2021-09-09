@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PHP Pro Bid v7\n"
 "POT-Creation-Date: 2017-11-13 09:56+0200\n"
-"PO-Revision-Date: 2020-08-02 19:50+0300\n"
+"PO-Revision-Date: 2021-09-09 12:13+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.4\n"
+"X-Generator: Poedit 3.0\n"
 "X-Poedit-Basepath: /Users/patrickdanciu/Sites/ProBidv7\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-SourceCharset: UTF-8\n"
@@ -6617,7 +6617,7 @@ msgstr "Не удалось удалить выбранный товар."
 
 #: module/Listings/src/Listings/Controller/Cart.php:306
 msgid "The product has been removed from the shopping cart."
-msgstr "Товар был удален из ворзины."
+msgstr "Товар был удален из корзины."
 
 #: module/Listings/src/Listings/Controller/Categories.php:77
 #, php-format
@@ -15897,10 +15897,22 @@ msgstr ""
 msgid "Вино 1930 года в подарок купить в Москве и Санкт-Петербурге с доставкой"
 msgstr ""
 
-msgid "В Москви и СПБ с доставкой по России "
+msgid "Users Statistics Filter"
 msgstr ""
 
-msgid "Хересные вина в Москве и "
+msgid "Visitors"
+msgstr ""
+
+msgid "Crawlers"
+msgstr ""
+
+msgid "&amp;quot;80 лет ( &amp;quot;1888-1968&amp;quot;)"
+msgstr ""
+
+msgid "Terms &amp; Conditions"
+msgstr ""
+
+msgid "Коньяк СССР купить в Москве, Санкт-Петербурге на аукционе"
 msgstr ""
 
 #~ msgid "days,"
@@ -16079,38 +16091,3 @@ msgstr ""
 
 #~ msgid "A new offer was placed on one of your listings from %s."
 #~ msgstr "Вы получили новое предложение от %s."
-msgid "Users Statistics Filter"
-msgstr ""
-
-msgid "Visitors"
-msgstr ""
-
-msgid "Crawlers"
-msgstr ""
-
-msgid ""
-"В Москви и СПБ с доставкой по России "
-"купить сухое белое вино."
-"Аукцион "
-"коллекционных вин."
-msgstr ""
-
-msgid ""
-"Хересные вина в Москве и "
-"Санкт-Петербурге на аукционе. "
-"Купить по "
-"лучшим ценам"
-msgstr ""
-
-msgid "&amp;quot;80 лет ( &amp;quot;1888-1968&amp;quot;)"
-msgstr ""
-
-msgid "Terms &amp; Conditions"
-msgstr ""
-
-msgid ""
-"Коньяк СССР купить в Москве, "
-"Санкт-Петербурге на аукционе"
-msgstr ""
-
-678005
