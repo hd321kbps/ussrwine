@@ -1,0 +1,117 @@
+<?php
+/**
+ * @version 8.3 [rev.8.3.01]
+ */
+/** @var bool $all */
+/** @var bool $dropdown */
+/** @var string $filter */
+/** @var \Ppb\Db\Table\Row\Listing $listing */
+
+$dropdown = (isset($dropdown)) ? $dropdown : false;
+$filter = (isset($filter)) ? $filter : null;
+$all = (isset($all)) ? $all : false;
+$membersAreaBtn = (isset($membersAreaBtn)) ? $membersAreaBtn : false;
+
+$buttons = array();
+
+if ($membersAreaBtn) {
+    $sellingBrowseFilter = null;
+
+    if ($listing->isDraft()) {
+        $sellingBrowseFilter = 'drafts';
+    }
+    else if ($listing->isOpen()) {
+        $sellingBrowseFilter = 'open';
+    }
+    else if ($listing->isScheduled()) {
+        $sellingBrowseFilter = 'scheduled';
+    }
+    else if ($listing->isClosed()) {
+        $sellingBrowseFilter = 'closed';
+    }
+
+    if ($sellingBrowseFilter !== null) {
+        $buttons[] = array(
+            'title'   => $this->_('Go To Members Area'),
+            'label'   => $this->_('Go To Members Area'),
+            'class'   => 'btn btn-primary mb-1 mr-2',
+            'href'    => $this->url(array('module' => 'members', 'controller' => 'selling', 'action' => 'browse', 'filter' => $sellingBrowseFilter)),
+            'feather' => 'clipboard',
+        );
+    }
+}
+
+if ($listing->canEdit()) {
+    $buttons[] = array(
+        'title'   => $this->_('Edit Listing'),
+        'label'   => $this->_('Edit'),
+        'class'   => 'btn btn-secondary mb-1',
+        'href'    => $this->url(array('id' => $listing['id']), 'listings-edit'),
+        'feather' => 'folder',
+    );
+}
+
+if ($all && !$listing['active']) {
+    $buttons[] = array(
+        'title'   => $this->_('Pay Listing Setup Fee'),
+        'label'   => $this->_('Pay Listing Setup Fee'),
+        'class'   => 'btn btn-success mb-1',
+        'href'    => $this->url(array('module' => 'app', 'controller' => 'payment', 'action' => 'listing-setup', 'id' => $listing['id'])),
+        'feather' => 'airplay',
+    );
+}
+
+if ($filter != 'drafts') {
+    $buttons[] = array(
+        'title'   => $this->_('List Similar'),
+        'label'   => $this->_('List Similar'),
+        'class'   => 'btn btn-light mb-1',
+        'href'    => $this->url(array('id' => $listing['id']), 'listings-create-similar'),
+        'feather' => 'airplay',
+    );
+}
+else {
+    $buttons[] = array(
+        'title'   => $this->_('List Draft'),
+        'label'   => $this->_('List Draft'),
+        'class'   => 'btn btn-success mb-1',
+        'href'    => $this->url(array('id' => $listing['id']), 'listings-list-draft'),
+        'feather' => 'file-text',
+    );
+}
+
+if ($all && $listing->canClose()) {
+    $buttons[] = array(
+        'title'        => $this->_('Close Listing'),
+        'label'        => $this->_('Close'),
+        'class'        => 'btn btn-warning mb-1',
+        'href'         => $this->url(array('module' => 'listings', 'controller' => 'listing', 'action' => 'close', 'id' => $listing['id'])),
+        'data-message' => $this->_('Are you sure you want to close this listing?'),
+        'feather'      => 'slash',
+    );
+}
+
+?>
+
+<?php foreach ($buttons as $button) {
+    $attributes = array();
+    foreach ($button as $key => $value) {
+        if ($key == 'class' && $dropdown) {
+            $value = 'dropdown-item';
+        }
+
+        if ($key == 'class' && !empty($button['data-message'])) {
+            $value .= ' ' . 'confirm-box';
+        }
+
+        if (!in_array($key, array('label', 'feather'))) {
+            $attributes[] = $key . '="' . $value . '"';
+        }
+    }
+
+    echo '<a ' . implode(' ', $attributes) . '>'
+        . ((!empty($button['feather']) && !$dropdown) ? '<span data-feather="' . $button['feather'] . '"></span> ' : '')
+        . ((!empty($button['label'])) ? $button['label'] : '')
+        . '</a> ';
+} ?>
+
