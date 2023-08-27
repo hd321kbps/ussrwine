@@ -1,25 +1,26 @@
 body {
-  background-image: url(https://ussrwine.com/themes/ussrwine/images/bg.gif);
+  background-image: url(/themes/ussrwine/images/bg.gif);
   color: #431;
 }
 a {
   color: #431;
 }
-a:hover, a:focus {
-  color: #A17D43;
+a:hover,
+a:focus {
+  color: #a17d43;
   text-decoration: underline;
 }
 header {
-  background-image: url(https://ussrwine.com/themes/ussrwine/images/block.gif);
-  border-bottom: 1px dashed #DFDACF;
+  background-image: url(/themes/ussrwine/images/block.gif);
+  border-bottom: 1px dashed #dfdacf;
 }
 header .desktop-navbar .nav-search {
   background-color: #e8e6de;
   border-radius: 0;
-  border: 1px solid #DFDACF;
+  border: 1px solid #dfdacf;
 }
 header .desktop-navbar .nav-link {
-  color: #A17D43;
+  color: #a17d43;
 }
 main {
   margin-top: 1.5rem;
@@ -28,35 +29,38 @@ main {
   margin-top: 0;
 }
 .card {
-  border: 1px solid #DFDACF;
+  border: 1px solid #dfdacf;
 }
-.listing-card, .card-highlighted {
-  background-image: url(https://ussrwine.com/themes/ussrwine/images/block.gif);
+.listing-card,
+.card-highlighted {
+  background-image: url(/themes/ussrwine/images/block.gif);
 }
-.btn-primary, .nav-pills .nav-link.active {
+.btn-primary,
+.nav-pills .nav-link.active {
   border: 0;
-  background-color: #281A09;
+  background-color: #281a09;
 }
 .breadcrumb {
   background-color: #e8e6de;
 }
-.sidebar-menu .nav-item.open > a, .sidebar-menu .nav-item > a:hover {
-  color: #A17D43;
+.sidebar-menu .nav-item.open > a,
+.sidebar-menu .nav-item > a:hover {
+  color: #a17d43;
 }
 .nav-tabs {
-  border-radius: .25rem;
+  border-radius: 0.25rem;
 }
 .nav-tabs .nav-item {
   margin-bottom: -2px;
 }
 .nav-tabs .nav-link.active {
-  background-color: #281A09;
-  border-radius: .25rem;
+  background-color: #281a09;
+  border-radius: 0.25rem;
   border: 0;
   color: #fff;
 }
 .page-item.active .page-link {
-  background-color: #281A09;
+  background-color: #281a09;
   border-color: transparent;
 }
 .page-link {
@@ -67,8 +71,11 @@ main {
   background-color: #fff;
   border-color: #ccc;
 }
-.slick-prev:before, .slick-next:before, .listing-details #jq-thumbnails .slick-prev::before, .listing-details #jq-thumbnails .slick-next::before {
-  color: #A17D43;
+.slick-prev:before,
+.slick-next:before,
+.listing-details #jq-thumbnails .slick-prev::before,
+.listing-details #jq-thumbnails .slick-next::before {
+  color: #a17d43;
   opacity: 1;
 }
 .page-item .page-link:hover {
@@ -88,9 +95,10 @@ main {
   border-radius: 0;
 }
 .nav-fill {
-  border: 1px solid #DFDACF;
+  border: 1px solid #dfdacf;
 }
-.navbar-nav .nav-link:hover, .nav-link:hover {
+.navbar-nav .nav-link:hover,
+.nav-link:hover {
   text-decoration: underline;
 }
 .nav-main-menu .nav-link:hover {
@@ -103,11 +111,11 @@ main {
   background-color: #fff;
 }
 .btn-secondary {
-  background-color: #281A09;
+  background-color: #281a09;
   border-color: transparent;
 }
 .btn-secondary:hover {
-  background-color: #281A09;
+  background-color: #281a09;
   border-color: transparent;
   text-decoration: underline;
 }
@@ -117,7 +125,7 @@ main {
 }
 .btn-outline-secondary:hover {
   color: #fff;
-  background-color: #281A09;
+  background-color: #281a09;
   border-color: transparent;
   text-decoration: underline;
 }
@@ -128,36 +136,38 @@ main {
 }
 .btn-primary:hover {
   color: #fff;
-  background-color: #281A09;
-  border-color: #281A09;
+  background-color: #281a09;
+  border-color: #281a09;
   text-decoration: underline;
 }
-.btn.focus, .btn:focus {
+.btn.focus,
+.btn:focus {
   box-shadow: none;
 }
 .bg-light {
-  background-color: transparent!important;
+  background-color: transparent !important;
 }
-.pb-2, .py-2 {
+.pb-2,
+.py-2 {
   padding-bottom: 0 !important;
-  border-radius: .25rem;
+  border-radius: 0.25rem;
 }
 header .desktop-navbar .navbar-nav.nav-main-menu .active .nav-link {
-  color: #A17D43;
-  border-bottom: 1px solid #A17D43;
+  color: #a17d43;
+  border-bottom: 1px solid #a17d43;
 }
 footer {
-  background-image: url(https://ussrwine.com/themes/ussrwine/images/block.gif);
-  color: #A17D43;
+  background-image: url(/themes/ussrwine/images/block.gif);
+  color: #a17d43;
 }
 footer.footer-two {
-  border-top: 1px dashed #DFDACF;
+  border-top: 1px dashed #dfdacf;
 }
 .dev_link {
   position: relative;
 }
 .dev_logo {
-  background-image: url(https://ussrwine.com/themes/ussrwine/images/IM_logo.svg);
+  background-image: url(/themes/ussrwine/images/IM_logo.svg);
   width: 41px;
   background-repeat: no-repeat;
   display: inline-block;
@@ -173,10 +183,11 @@ footer.footer-two {
 @media (min-width: 1200px) {
   .main {
     flex: 0 0 calc(100% - 235px);
+    max-width: calc(100% - 235px);
   }
 }
 @media (max-width: 575.98px) {
   .listing-card .card-footer .button-text {
-      display: inline;
+    display: inline;
   }
 }

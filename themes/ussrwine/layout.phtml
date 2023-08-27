@@ -1,6 +1,6 @@
 <?php
 /**
- * @version 8.2 [rev.8.2.02]
+ * @version 8.4 [rev.8.4.01]
  */
 
 /** @var \Cube\Controller\Request $request */
@@ -9,10 +9,10 @@ $module = $request->getModule();
 $controller = $request->getController();
 $action = $request->getAction();
 
-$indexPage = ($module == 'App' && $controller == 'Index' && $action == 'Index') ? true : false;
-$browsePage = ($module == 'Listings' && $controller == 'Browse' && $action == 'Index') ? true : false;
-$cmsPage = ($module == 'App' && $controller == 'Cms' && $action == 'Index') ? true : false;
-$listingDetailsPage = ($module == 'Listings' && $controller == 'Listing' && $action == 'Details') ? true : false;
+$indexPage = $module == 'App' && $controller == 'Index' && $action == 'Index';
+$browsePage = $module == 'Listings' && $controller == 'Browse' && $action == 'Index';
+$cmsPage = $module == 'App' && $controller == 'Cms' && $action == 'Index';
+$listingDetailsPage = $module == 'Listings' && $controller == 'Listing' && $action == 'Details';
 
 $parentId = $request->getParam('parent_id');
 
@@ -48,10 +48,10 @@ $colorTheme = (isset($this->settings['eight_theme_color_theme'])) ? $this->setti
                 <script type="text/javascript" src="' . $this->baseUrl . '/js/global.js"></script>');
     }
 
-    $this->script()->addHeaderCode('<link href="' . $this->themeFolder . '/css/theme.css" media="all" rel="stylesheet" type="text/css">')
-        ->addHeaderCode('<link href="' . $this->themeFolder . '/css/' . $headerType . '.css" media="all" rel="stylesheet" type="text/css">')
-        ->addHeaderCode('<link href="' . $this->themeFolder . '/css/colors.css" media="all" rel="stylesheet" type="text/css">')
-        ->addHeaderCode('<link href="' . $this->themeFolder . '/css/my.css" media="all" rel="stylesheet" type="text/css">');
+        $this->script()->addHeaderLinkTag($this->themeFolder . '/css/theme.css')
+        ->addHeaderLinkTag($this->themeFolder . '/css/' . $headerType . '.css')
+        ->addHeaderLinkTag($this->themeFolder . '/css/colors.css')
+        ->addHeaderLinkTag($this->themeFolder . '/css/my.css');
     ?>
 
     <?php echo $this->script()->displayHeaderCode(); ?>
@@ -176,7 +176,7 @@ echo $this->navigation()
 <div class="loading-modal"></div>
 
 <?php
-$this->script()->addBodyCode('<script src="' . $this->themeFolder . '/js/theme.js" type="text/javascript"></script>');
+$this->script()->addBodyScriptTag($this->themeFolder . '/js/theme.js');
 ?>
 
 <!-- client side scripts [loaded in bootstrap] -->

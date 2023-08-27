@@ -1,6 +1,6 @@
 <?php
 /**
- * @version 8.1 [rev.8.1.01]
+ * @version 8.4 [rev.8.4.01]
  */
 
 $initialContainer = $this->navigation()->getContainer();
@@ -12,7 +12,6 @@ $membersRole = 'Guest';
 if (!empty($this->loggedInUser['id'])) {
     $membersRole = $this->userDetails($this->loggedInUser['id'])->getUser()->getRole();
 }
-
 ?>
 
 <ul class="navbar-nav nav-links-desktop">
@@ -35,7 +34,7 @@ if (!empty($this->loggedInUser['id'])) {
                title="<?php echo $this->_('Sign Out'); ?>"><?php echo $this->_('Sign Out'); ?></a>
         <?php }
         else { ?>
-            <a class="nav-link dialog-box" rel="nofollow"
+            <a class="nav-link jq-sign-in" rel="nofollow"
                href="<?php echo $this->url(array('module' => 'members', 'controller' => 'user', 'action' => 'login', 'async' => 1)); ?>"
                title="<?php echo $this->_('Sign In'); ?>"><?php echo $this->_('Sign In'); ?></a>
         <?php } ?>
@@ -47,10 +46,10 @@ if (!empty($this->loggedInUser['id'])) {
            title="<?php echo $this->_('Wish List'); ?>"><?php echo $this->_('Wish List'); ?></a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="https://forumwuc.com/" title="Наш Форум" target="_blank">Наш Форум</a>
+        <a class="nav-link" href="https://forumwuc.pro" title="Наш Форум" target="_blank">Наш Форум</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="http://wuccatalog.com/" title="Каталог цен" target="_blank">Каталог цен</a>
+        <a class="nav-link" href="http://wuccatalog.online" title="Каталог цен" target="_blank">Каталог цен</a>
     </li>
 </ul>
 
@@ -113,9 +112,29 @@ if (!empty($this->loggedInUser['id'])) {
 </div>
 
 <?php
-$this->script()->addBodyCode('<script type="text/javascript">
-    $(\'.dropdown-toggle\').dropdown();
+$this->script()
+->addBodyCode("<script type=\"text/javascript\">
+        $('.jq-sign-in').off('click').on('click', function (e) {
+            let signInBoxTitle = $(this).attr('title');
+
+            e.preventDefault();
+    
+            $.get($(this).attr('href'), function (data) {
+                bootbox.dialog({
+                    title: signInBoxTitle,
+                    message: data,
+                    closeButton: true
+                });
+            });
+        });
+    </script>")
+->addBodyCode('<script type="text/javascript">
+$(\'.dropdown-toggle\').dropdown();
 </script>');
+
+if (isset($isAsync) && $isAsync) {
+echo $this->script()->displayBodyCode();
+}
 ?>
 
 

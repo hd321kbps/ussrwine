@@ -1,4 +1,4 @@
-/* version 8.0 [rev.8.0.01] */
+/* version 8.4 [rev.8.4.01] */
 @import "../../../css/colors";
 @import "../../../css/mixins";
 $fontSizeSmall: 85%; // default: 80%
@@ -91,8 +91,19 @@ header {
             padding-bottom: 0;
         }
 
-        .fs-dropdown:hover > .dropdown-menu {
+        .fs-dropdown > .dropdown-menu {
             display: block;
+            pointer-events:none;       /* this is so it behaves like display none and mouse does not interact with child when hidden */
+            opacity: 0;
+            transition: opacity 0.1s;  /* change length to longer for a nicer fade */
+            transition-delay: 1s;      /* fadeout won't happen for a second */
+        }
+
+        .fs-dropdown:hover > .dropdown-menu {
+            pointer-events: auto;
+            opacity: 1;
+            transition: opacity 0.1s;    /* fade in when hovered */
+            transition-delay: 0s;        /* fade in immediately */
         }
     }
 }

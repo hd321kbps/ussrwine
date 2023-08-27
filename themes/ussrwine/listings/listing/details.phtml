@@ -1,6 +1,6 @@
 <?php
 /**
- * @version 8.3 [rev.8.3.01]
+ * @version 8.4 [rev.8.4.01]
  */
 
 use Ppb\Model\Shipping as ShippingModel;
@@ -67,7 +67,7 @@ $this->script()->addBodyCode("
             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">
                 <span data-feather="x"></span>
             </button>
-            <?php echo $this->renderHtml($vacationMode); ?>
+            <?php echo $this->renderHtml($vacationMode, false, true, true); ?>
         </div>
         <!-- /IN VACATION ALERT -->
     <?php } ?>
@@ -176,7 +176,7 @@ $this->script()->addBodyCode("
                         <?php if ($tab['tabId'] == 'details') { ?>
                             <h1 class="title" itemprop="name"><?php echo $listing['name']; ?></h1>
                             <?php if (!empty($listing['short_description'])) { ?>
-                                <p class="short-description"><?php echo $this->renderHtml($listing['short_description']); ?></p>
+                              <p class="short-description"><?php echo $this->renderHtml($listing['short_description'], false, true, true); ?></p>
                             <?php } ?>
 
                             <h3 class="au-price price">
@@ -592,7 +592,7 @@ $this->script()->addBodyCode("
                         <span><?php echo $this->_('Description'); ?></span>
                     </h5>
                     <div itemprop="description">
-                        <?php echo $this->renderHtml($listing['description'], false, false); ?>
+                      <?php echo $this->renderHtml($listing['description'], false, true, true); ?>
                     </div>
                 <?php } ?>
 
@@ -603,7 +603,7 @@ $this->script()->addBodyCode("
                     <dl>
                         <?php foreach ($customFields as $field) { ?>
                             <dt><?php echo $this->_($field['label']); ?></dt>
-                            <dd><?php echo $this->renderHtml($this->fieldDisplay($field['display'], null, '-')); ?></dd>
+                            <dd><?php echo $this->renderHtml($this->fieldDisplay($field['display'], null, '-'), false, true, true); ?></dd>
                         <?php } ?>
                     </dl>
                 <?php } ?>
@@ -663,12 +663,14 @@ $this->script()->addBodyCode("
                                 <dt><?php echo $this->_('Dimensions'); ?></dt>
                                 <dd><?php echo $this->fieldDisplay($this->listing()->dimensions()); ?></dd>
                             <?php } ?>
+                            <?php if (!empty($postageSettings[\Ppb\Model\Shipping::FLD_SHIPPING_DETAILS])) { ?>
                             <dt><?php echo $this->_('Shipping Instructions'); ?></dt>
                             <dd>
                                 <?php echo $this->fieldDisplay($this->renderText($postageSettings[\Ppb\Model\Shipping::FLD_SHIPPING_DETAILS], true), null,
                                     '-'); ?>
                             </dd>
                         <?php } ?>
+                    <?php } ?>
                     </dl>
 
                     <dl>

@@ -2,13 +2,13 @@
 
 /**
  *
- * PHP Pro Bid $Id$ Dui6mZd1MnhYyN4fAiR2TIdKIb9IKVr8TY8/nPnLL+hg34QrO4+BKj1WT7DPHi3J2FpZk9MaGHti/kPR63huqv265FVjvE6ZzXC/dEhabH8=
+ * PHP Pro Bid $Id$ iA3KewypW05kPSUj/us9vVXSztOgMEqSlOrgQG+8t61C5MALW6TA+/CLnHjYN+zMjY7c1KAqAmCMGqjba4lCFpWg2MmIMd2a41mLKflUKac=
  *
  * @link        http://www.phpprobid.com
- * @copyright   Copyright (c) 2021 Online Ventures Software & CodeCube SRL
+ * @copyright   Copyright (c) 2023 Online Ventures Software & CodeCube SRL
  * @license     http://www.phpprobid.com/license Commercial License
  *
- * @version     8.3 [rev.8.3.02]
+ * @version     8.4 [rev.8.4.02]
  */
 
 /**
@@ -30,7 +30,8 @@ use Cube\Validate,
     Ppb\Service\Users as UsersService,
     Ppb\Service\Table\PaymentGateways as PaymentGatewaysService,
     Ppb\Service\Table\StoresSubscriptions as StoresSubscriptionsService,
-    Ppb\Validate\BlockedUser as BlockedUserValidator;
+    Ppb\Validate\BlockedUser as BlockedUserValidator,
+    Ppb\Validate\DateLessThan as DateLessThanValidator;
 
 class User extends AbstractElements
 {
@@ -157,8 +158,8 @@ class User extends AbstractElements
         $agreeTermsValidator = new Validate\NotEmpty();
         $agreeTermsValidator->setMessage('You must agree to our terms and conditions in order to complete the registration.');
 
-        $birthDateValidator = new Validate\LessThan();
-        $birthDateValidator->setMaxValue(date('Y-m-d', time() - (intval($settings['min_reg_age']) * 365 * 86400)))
+        $birthDateValidator = new DateLessThanValidator();
+        $birthDateValidator->setMaxValue(date('Y-m-d', time() - (intval($settings['min_reg_age']) * 365.25 * 86400 - 1)))
             ->setMessage(sprintf($translate->_('You must be at least %s years old in order to be able to register.'),
                 $settings['min_reg_age']));
 
@@ -515,7 +516,7 @@ class User extends AbstractElements
             array(
                 'form_id'     => array('basic', 'admin', 'reset-password'),
                 'id'          => 'password',
-                'element'     => 'password',
+                'element'     => '\\Ppb\\Form\\Element\\PasswordEye',
                 'label'       => $this->_('Password'),
                 'description' => sprintf($translate->_('Enter a password for your account.<br>Password strength rules: %s.'),
                     $passwordValidator->getConditions()),
@@ -530,7 +531,7 @@ class User extends AbstractElements
             array(
                 'form_id'     => array('basic', 'admin', 'reset-password'),
                 'id'          => 'password_confirm',
-                'element'     => 'password',
+                'element'     => '\\Ppb\\Form\\Element\\PasswordEye',
                 'label'       => $this->_('Confirm Password'),
                 'description' => $this->_('Type your password again to confirm.'),
                 'attributes'  => array(
@@ -1129,10 +1130,10 @@ class User extends AbstractElements
             $customFields[$key]['form_id'] = 'advanced';
             $customFields[$key]['id'] = 'custom_field_' . $customField['id'];
 
-            if (in_array($customField['element'], array('text', 'select', 'textarea'))) {
-                $attributes = unserialize($customField['attributes']);
-                $customFields[$key]['attributes'] = serialize($attributes);
-            }
+//            if (in_array($customField['element'], array('text', 'select', 'textarea'))) {
+//                $attributes = unserialize($customField['attributes']);
+//                $customFields[$key]['attributes'] = serialize($attributes);
+//            }
         }
         array_splice($elements, 10, 0, $customFields);
 

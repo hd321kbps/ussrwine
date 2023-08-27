@@ -2,7 +2,7 @@
 
 /**
  *
- * Cube Framework $Id$ MzunkLMy6KV8l+PHHZdZB2HhkMpwehcN9sZk2MqyQAe/P78JNBbe3VrDZY4pG5XWKg8QOLmoZDS471MY+XJ2aDY5BY5U9Ma8fDQydRpKtqE=
+ * Cube Framework $Id$ qAVRvRVgnqCRpXtFKCFigeBKSk6YCttVSNOnVyX6slGY6RlIx1Ebqn9BcDpPDjljHDVKcuhfS2gP4gmfSIipiubaM/sD48SWNFhcdcofOdg=
  *
  * @link        http://codecu.be/framework
  * @copyright   Copyright (c) 2021 CodeCube SRL
